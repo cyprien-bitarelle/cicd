@@ -1,7 +1,7 @@
 node {
     
     def registryProjet='cyprien962/'
-    def IMAGE="${registryProjet}hackathon-ipssi-equipe6:version-${env.BUILD_ID}"
+    def IMAGE="${registryProjet}cicd:version-${env.BUILD_ID}"
     
     stage('Clone') {
         checkout scm
@@ -18,7 +18,7 @@ node {
     }
     
     stage('Push') {
-        docker.withRegistry('https://registry.hub.docker.com', 'DOCKER_ID') {
+        docker.withRegistry('https://registry.hub.docker.com', 'DOCKER-ID') {
             img.push 'latest'
             img.push()
         }
